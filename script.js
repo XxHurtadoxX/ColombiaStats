@@ -4,56 +4,56 @@ const indicatorsData = {
         name: "PIB per Cápita",
         description: "Compara el crecimiento económico de Colombia vs OCDE durante cada gobierno. Un resultado positivo indica que Colombia creció más que el promedio OCDE en ese período.",
         duque: {
-            colombia: -2.5,
-            ocde: 1.2,
-            did: -3.7
+            colombia: 7.9,
+            ocde: 5.1,
+            did: 2.8
         },
         petro: {
-            colombia: 3.2,
-            ocde: 1.1,
-            did: 2.1
+            colombia: 0.2,
+            ocde: 2.3,
+            did: -2.1
         }
     },
     desempleo: {
         name: "Desempleo",
         description: "Compara los cambios en desempleo de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más el desempleo que el promedio OCDE.",
         duque: {
-            colombia: 1.8,
-            ocde: 0.3,
-            did: 1.5
+            colombia: 1.1,
+            ocde: -0.5,
+            did: 1.6
         },
         petro: {
-            colombia: -1.2,
-            ocde: 0.1,
-            did: -1.3
+            colombia: -0.9,
+            ocde: -0.1,
+            did: -0.8
         }
     },
     inflacion: {
         name: "Inflación",
         description: "Compara los cambios en inflación de Colombia vs OCDE durante cada gobierno. Un resultado positivo indica que Colombia tuvo mayor incremento inflacionario que el promedio OCDE.",
         duque: {
-            colombia: 2.1,
-            ocde: 1.8,
-            did: 0.3
+            colombia: 7.0,
+            ocde: 6.3,
+            did: 0.7
         },
         petro: {
-            colombia: 4.2,
-            ocde: 2.1,
-            did: 2.1
+            colombia: -3.6,
+            ocde: -5.4,
+            did: 1.8
         }
     },
     deficit: {
         name: "Déficit Fiscal",
         description: "Compara los cambios en déficit fiscal de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia mejoró más su balance fiscal que el promedio OCDE.",
         duque: {
-            colombia: -1.8,
-            ocde: -0.5,
-            did: -1.3
+            colombia: 3.1,
+            ocde: 4.6,
+            did: -1.5
         },
         petro: {
-            colombia: 0.9,
-            ocde: -0.2,
-            did: 1.1
+            colombia: 0.5,
+            ocde: -2.5,
+            did: 3.0
         }
     },
     gini: {
@@ -251,13 +251,30 @@ function updateProgressBar(fillElement, didValue) {
     }
 }
 
+// Lista de indicadores donde "menos es mejor" (colores invertidos)
+const reversedColorIndicators = ['desempleo', 'inflacion', 'deficit', 'gini', 'pobreza', 'mortalidad'];
+
 // Función para actualizar el color del porcentaje
 function updatePercentageColor(element, value) {
     element.classList.remove('positive', 'negative');
-    if (value >= 0) {
-        element.classList.add('positive');
+    
+    // Determinar si este indicador requiere colores invertidos
+    const isReversedIndicator = reversedColorIndicators.includes(currentIndicator);
+    
+    if (isReversedIndicator) {
+        // Para indicadores "malos": positivo = rojo (malo), negativo = verde (bueno)
+        if (value >= 0) {
+            element.classList.add('negative'); // Rojo para valores positivos (malo)
+        } else {
+            element.classList.add('positive'); // Verde para valores negativos (bueno)
+        }
     } else {
-        element.classList.add('negative');
+        // Para indicadores "buenos": positivo = verde (bueno), negativo = rojo (malo)
+        if (value >= 0) {
+            element.classList.add('positive'); // Verde para valores positivos (bueno)
+        } else {
+            element.classList.add('negative'); // Rojo para valores negativos (malo)
+        }
     }
 }
 

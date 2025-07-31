@@ -223,7 +223,7 @@ body::after {
     border-radius: 50%;
     object-fit: cover;
     border: 3px solid;
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.8);
     object-position: center 5%;
 }
 

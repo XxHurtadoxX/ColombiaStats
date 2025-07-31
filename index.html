@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis Comparativo del Desarrollo Económico en Colombia</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1 class="main-title">Análisis Comparativo del Desarrollo Económico en Colombia</h1>
+            <p class="subtitle">Estudio de diferencias en diferencias entre los períodos presidenciales de Iván Duque y Gustavo Petro<br>
+            Utilizando la media de los países de OCDE como grupo de control</p>
+        </header>
+
+        <!-- Indicadores Buttons -->
+        <section class="indicators-section">
+            <div class="indicators-grid">
+                <button class="indicator-btn active" data-indicator="pib">PIB per Cápita</button>
+                <button class="indicator-btn" data-indicator="desempleo">Desempleo</button>
+                <button class="indicator-btn" data-indicator="inflacion">Inflación</button>
+                <button class="indicator-btn" data-indicator="deficit">Déficit Fiscal</button>
+                <button class="indicator-btn" data-indicator="gini">GINI</button>
+                <button class="indicator-btn" data-indicator="pobreza">Pobreza</button>
+                <button class="indicator-btn" data-indicator="seguridad">Seguridad</button>
+                <button class="indicator-btn" data-indicator="mortalidad">Mortalidad Infantil</button>
+            </div>
+        </section>
+
+        <!-- Comparison Section -->
+        <section class="comparison-section">
+            <div class="comparison-container">
+                <!-- Duque Section -->
+                <div class="president-section duque-section">
+                    <div class="president-info">
+                        <img src="https://i.imgur.com/fqwQKc9.png" alt="Iván Duque" class="president-img duque-img">
+                        <div class="president-data">
+                            <h3 class="president-name">Iván Duque</h3>
+                            <div class="data-container">
+                                <div class="data-item">
+                                    <span class="data-label">Cambio Colombia:</span>
+                                    <span class="data-value" id="duque-colombia">-2.5%</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="data-label">Cambio OCDE:</span>
+                                    <span class="data-value" id="duque-ocde">1.2%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar duque-bar" id="duque-bar">
+                            <div class="progress-fill duque-fill" id="duque-fill"></div>
+                        </div>
+                        <span class="progress-value" id="duque-did">-3.7%</span>
+                    </div>
+                </div>
+
+                <!-- Center Line -->
+                <div class="center-line"></div>
+
+                <!-- Petro Section -->
+                <div class="president-section petro-section">
+                    <div class="progress-container">
+                        <div class="progress-bar petro-bar" id="petro-bar">
+                            <div class="progress-fill petro-fill" id="petro-fill"></div>
+                        </div>
+                        <span class="progress-value" id="petro-did">+2.1%</span>
+                    </div>
+                    <div class="president-info">
+                        <div class="president-data">
+                            <h3 class="president-name">Gustavo Petro</h3>
+                            <div class="data-container">
+                                <div class="data-item">
+                                    <span class="data-label">Cambio Colombia:</span>
+                                    <span class="data-value" id="petro-colombia">3.2%</span>
+                                </div>
+                                <div class="data-item">
+                                    <span class="data-label">Cambio OCDE:</span>
+                                    <span class="data-value" id="petro-ocde">1.1%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <img src="https://i.imgur.com/dAqNWvS.png" alt="Gustavo Petro" class="president-img petro-img">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Current Indicator Display -->
+        <section class="current-indicator">
+            <h2 id="current-indicator-name">PIB per Cápita</h2>
+            <p class="indicator-description" id="indicator-description">
+                Diferencia en diferencias del PIB per cápita entre los períodos presidenciales
+            </p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="company-section">
+                <img src="https://i.imgur.com/Q57HCQU.png" alt="EA Tech Company" class="company-logo">
+                <div class="company-info">
+                    <h3 class="company-name">EA Tech Company S.A.S.</h3>
+                    <p class="company-tagline">Análisis económico basado en evidencia empírica</p>
+                </div>
+            </div>
+            
+            <div class="developer-section">
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQHBjglRbVTxCg/profile-displayphoto-shrink_800_800/B4EZVzsOY3HcAg-/0/1741402728439?e=1756944000&v=beta&t=hpBcJbuuhBtp2a7rhDOzVfrzZXjzMrMGWYi2gvl4yyA" alt="Daniel Hurtado" class="developer-img">
+                <div class="developer-info">
+                    <h4 class="developer-title">Desarrollador</h4>
+                    <p class="developer-name">Daniel Hurtado</p>
+                    <p class="developer-role">Economista</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p class="copyright">© 2025 EA Tech Company S.A.S. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,445 @@
+/* Reset and Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 50%, #0a0a0a 100%);
+    color: #ffffff;
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* Header Styles */
+.header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+}
+
+.main-title {
+    font-size: clamp(1.8rem, 4vw, 3rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 20px;
+    text-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.subtitle {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: 400;
+    color: #b0b0b0;
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+/* Indicators Section */
+.indicators-section {
+    margin-bottom: 50px;
+}
+
+.indicators-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.indicator-btn {
+    background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+    border: 2px solid #333;
+    color: #ffffff;
+    padding: 15px 20px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.indicator-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.indicator-btn:hover::before {
+    left: 100%;
+}
+
+.indicator-btn:hover {
+    border-color: #555;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(255, 255, 255, 0.1);
+}
+
+.indicator-btn.active {
+    background: linear-gradient(135deg, #4a90e2 0%, #357abd 100%);
+    border-color: #4a90e2;
+    box-shadow: 0 8px 25px rgba(74, 144, 226, 0.3);
+}
+
+/* Comparison Section */
+.comparison-section {
+    margin-bottom: 40px;
+}
+
+.comparison-container {
+    position: relative;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.president-section {
+    display: flex;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 20px;
+}
+
+.duque-section {
+    justify-content: flex-start;
+}
+
+.petro-section {
+    justify-content: flex-end;
+    flex-direction: row-reverse;
+}
+
+.president-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    min-width: 300px;
+}
+
+.president-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.duque-img {
+    border-color: #87ceeb;
+    box-shadow: 0 8px 25px rgba(135, 206, 235, 0.3);
+}
+
+.petro-img {
+    border-color: #9966cc;
+    box-shadow: 0 8px 25px rgba(153, 102, 204, 0.3);
+}
+
+.president-data {
+    flex: 1;
+}
+
+.president-name {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #ffffff;
+}
+
+.data-container {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.data-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.data-label {
+    color: #b0b0b0;
+    font-weight: 400;
+}
+
+.data-value {
+    font-weight: 600;
+    color: #ffffff;
+    min-width: 60px;
+    text-align: right;
+}
+
+/* Progress Bars */
+.progress-container {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex: 1;
+    max-width: 400px;
+}
+
+.progress-bar {
+    height: 40px;
+    background: #2a2a2a;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    flex: 1;
+    border: 2px solid #333;
+}
+
+.progress-fill {
+    height: 100%;
+    border-radius: 18px;
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.duque-fill {
+    background: linear-gradient(135deg, #87ceeb 0%, #5fb3d9 100%);
+    box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
+}
+
+.petro-fill {
+    background: linear-gradient(135deg, #9966cc 0%, #7a4fb8 100%);
+    box-shadow: 0 4px 15px rgba(153, 102, 204, 0.4);
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.progress-value {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: #ffffff;
+    min-width: 70px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Center Line */
+.center-line {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 2px;
+    height: 200px;
+    background: linear-gradient(180deg, transparent 0%, #555 50%, transparent 100%);
+    z-index: 1;
+}
+
+/* Current Indicator Display */
+.current-indicator {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.current-indicator h2 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #4a90e2 0%, #9966cc 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.indicator-description {
+    color: #b0b0b0;
+    font-size: 1rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+    border-top: 1px solid #333;
+    padding: 40px 20px 20px;
+    margin-top: 60px;
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.company-section,
+.developer-section {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.company-logo,
+.developer-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid #333;
+}
+
+.company-name,
+.developer-name {
+    font-weight: 600;
+    color: #ffffff;
+    margin-bottom: 5px;
+}
+
+.company-tagline,
+.developer-role {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
+.developer-title {
+    color: #4a90e2;
+    font-weight: 500;
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid #333;
+}
+
+.copyright {
+    color: #888;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .indicators-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+    }
+
+    .indicator-btn {
+        padding: 12px 15px;
+        font-size: 0.8rem;
+    }
+
+    .president-section {
+        flex-direction: column;
+        gap: 15px;
+        margin-bottom: 25px;
+    }
+
+    .petro-section {
+        flex-direction: column;
+    }
+
+    .president-info {
+        min-width: auto;
+        width: 100%;
+        justify-content: center;
+    }
+
+    .progress-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .president-img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .center-line {
+        height: 100px;
+    }
+
+    .footer-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .company-section,
+    .developer-section {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .indicators-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 0.9rem;
+    }
+
+    .president-info {
+        flex-direction: column;
+        text-align: center;
+        gap: 10px;
+    }
+
+    .data-container {
+        align-items: center;
+    }
+
+    .data-item {
+        justify-content: center;
+        gap: 10px;
+    }
+}

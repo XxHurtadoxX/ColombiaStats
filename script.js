@@ -60,56 +60,56 @@ const indicatorsData = {
         name: "Coeficiente GINI",
         description: "Compara los cambios en desigualdad de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más la desigualdad que el promedio OCDE.",
         duque: {
-            colombia: 0.8,
-            ocde: 0.1,
-            did: 0.7
+            colombia: 3.9,
+            ocde: 0.0,
+            did: 3.9
         },
         petro: {
-            colombia: -1.5,
-            ocde: 0.2,
-            did: -1.7
+            colombia: -0.5,
+            ocde: 0.6,
+            did: -1.1
         }
     },
     pobreza: {
         name: "Pobreza",
         description: "Compara los cambios en pobreza de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más la pobreza que el promedio OCDE.",
         duque: {
-            colombia: 3.2,
+            colombia: 2.6,
             ocde: 0.5,
-            did: 2.7
+            did: 2.1
         },
         petro: {
-            colombia: -2.8,
-            ocde: 0.3,
-            did: -3.1
+            colombia: -3.6,
+            ocde: 0.5,
+            did: -4.1
         }
     },
     seguridad: {
-        name: "Seguridad",
-        description: "Compara los cambios en seguridad ciudadana de Colombia vs OCDE durante cada gobierno. Un resultado positivo indica que Colombia mejoró más su seguridad que el promedio OCDE.",
+        name: "Inseguridad (Homicidios/100k hab.)",
+        description: "Compara los cambios en seguridad ciudadana de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia mejoró más su seguridad que el promedio OCDE.",
         duque: {
-            colombia: -2.1,
-            ocde: 0.8,
-            did: -2.9
+            colombia: -1.4,
+            ocde: 0.0,
+            did: -1.4
         },
         petro: {
-            colombia: 1.4,
-            ocde: 0.6,
-            did: 0.8
+            colombia: 1.0,
+            ocde: 0.0,
+            did: 1.0
         }
     },
     mortalidad: {
-        name: "Mortalidad Infantil",
+        name: "Mortalidad Infantil (por 1000 nacidos vivos)",
         description: "Compara los cambios en mortalidad infantil de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más la mortalidad infantil que el promedio OCDE.",
         duque: {
-            colombia: -1.2,
-            ocde: -0.8,
-            did: -0.4
+            colombia: -1.0,
+            ocde: -0.25,
+            did: -0.75
         },
         petro: {
-            colombia: -2.1,
-            ocde: -0.9,
-            did: -1.2
+            colombia: 1.0,
+            ocde: 0.8,
+            did: 0.2
         }
     }
 };
@@ -252,7 +252,7 @@ function updateProgressBar(fillElement, didValue) {
 }
 
 // Lista de indicadores donde "menos es mejor" (colores invertidos)
-const reversedColorIndicators = ['desempleo', 'inflacion', 'deficit', 'gini', 'pobreza', 'mortalidad'];
+const reversedColorIndicators = ['desempleo', 'inflacion', 'deficit', 'gini', 'pobreza', 'seguridad', 'mortalidad'];
 
 // Función para actualizar el color del porcentaje
 function updatePercentageColor(element, value) {

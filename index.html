@@ -11,9 +11,8 @@
     <div class="container">
         <!-- Header -->
         <header class="header">
-            <h1 class="main-title">Análisis Comparativo del Desarrollo Económico en Colombia</h1>
-            <p class="subtitle">Estudio de diferencias en diferencias entre los períodos presidenciales de Iván Duque y Gustavo Petro<br>
-            Utilizando la media de los países de OCDE como grupo de control</p>
+            <h1 class="main-title">Análisis Comparativo del Desarrollo <br> Económico en Colombia</h1>
+            <p class="subtitle">Estudio de diferencias en diferencias entre los períodos presidenciales de Iván Duque y Gustavo Petro. Utilizando la media de los países de OCDE como grupo de control</p>
         </header>
 
         <!-- Indicadores Buttons -->
@@ -32,6 +31,7 @@
 
         <!-- Comparison Section -->
         <section class="comparison-section">
+            <h2 class="comparison-title">Diferencias en Diferencias</h2>
             <div class="comparison-container">
                 <!-- Duque Section -->
                 <div class="president-section duque-section">
@@ -39,6 +39,7 @@
                         <img src="https://i.imgur.com/fqwQKc9.png" alt="Iván Duque" class="president-img duque-img">
                         <div class="president-data">
                             <h3 class="president-name">Iván Duque</h3>
+                            <p class="president-period">2018 - 2022</p>
                             <div class="data-container">
                                 <div class="data-item">
                                     <span class="data-label">Cambio Colombia:</span>
@@ -52,27 +53,23 @@
                         </div>
                     </div>
                     <div class="progress-container">
-                        <div class="progress-bar duque-bar" id="duque-bar">
-                            <div class="progress-fill duque-fill" id="duque-fill"></div>
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar duque-bar" id="duque-bar">
+                                <div class="zero-line"></div>
+                                <div class="progress-fill duque-fill" id="duque-fill"></div>
+                            </div>
                         </div>
                         <span class="progress-value" id="duque-did">-3.7%</span>
                     </div>
                 </div>
 
-                <!-- Center Line -->
-                <div class="center-line"></div>
-
                 <!-- Petro Section -->
                 <div class="president-section petro-section">
-                    <div class="progress-container">
-                        <div class="progress-bar petro-bar" id="petro-bar">
-                            <div class="progress-fill petro-fill" id="petro-fill"></div>
-                        </div>
-                        <span class="progress-value" id="petro-did">+2.1%</span>
-                    </div>
                     <div class="president-info">
+                        <img src="https://i.imgur.com/dAqNWvS.png" alt="Gustavo Petro" class="president-img petro-img">
                         <div class="president-data">
                             <h3 class="president-name">Gustavo Petro</h3>
+                            <p class="president-period">2022 - 2025</p>
                             <div class="data-container">
                                 <div class="data-item">
                                     <span class="data-label">Cambio Colombia:</span>
@@ -84,7 +81,15 @@
                                 </div>
                             </div>
                         </div>
-                        <img src="https://i.imgur.com/dAqNWvS.png" alt="Gustavo Petro" class="president-img petro-img">
+                    </div>
+                    <div class="progress-container">
+                        <div class="progress-bar-wrapper">
+                            <div class="progress-bar petro-bar" id="petro-bar">
+                                <div class="zero-line"></div>
+                                <div class="progress-fill petro-fill" id="petro-fill"></div>
+                            </div>
+                        </div>
+                        <span class="progress-value" id="petro-did">+2.1%</span>
                     </div>
                 </div>
             </div>

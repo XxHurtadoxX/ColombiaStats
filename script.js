@@ -116,6 +116,7 @@ const indicatorsData = {
 
 // Variables globales
 let currentIndicator = 'pib';
+let animusDistortion;
 
 // Elementos del DOM
 const indicatorButtons = document.querySelectorAll('.indicator-btn');
@@ -134,6 +135,42 @@ const petroOcdeValue = document.getElementById('petro-ocde');
 const petroDidValue = document.getElementById('petro-did');
 const petroFill = document.getElementById('petro-fill');
 
+// Crear efecto Animus de distorsión con el cursor
+function createAnimusEffect() {
+    animusDistortion = document.createElement('div');
+    animusDistortion.className = 'animus-distortion';
+    document.body.appendChild(animusDistortion);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let isMoving = false;
+
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        
+        if (!isMoving) {
+            isMoving = true;
+            animusDistortion.style.opacity = '1';
+            animusDistortion.style.transform = `translate(${mouseX - 100}px, ${mouseY - 100}px) scale(1)`;
+            
+            // Efecto de distorsión en el fondo
+            document.body.style.setProperty('--mouse-x', mouseX + 'px');
+            document.body.style.setProperty('--mouse-y', mouseY + 'px');
+            
+            setTimeout(() => {
+                isMoving = false;
+                animusDistortion.style.opacity = '0';
+                animusDistortion.style.transform = `translate(${mouseX - 100}px, ${mouseY - 100}px) scale(0.8)`;
+            }, 300);
+        }
+    });
+
+    document.addEventListener('mouseleave', () => {
+        animusDistortion.style.opacity = '0';
+    });
+}
+
 // Función para formatear porcentajes
 function formatPercentage(value) {
     const sign = value >= 0 ? '+' : '';
@@ -142,10 +179,10 @@ function formatPercentage(value) {
 
 // Función para calcular el ancho de la barra basado en el valor DiD
 function calculateBarWidth(didValue) {
-    // Normalizamos el valor para que esté entre 0 y 100
+    // Normalizamos el valor para que esté entre 0 y 50% (la mitad de la barra)
     const maxValue = 5; // Valor máximo esperado para normalización
-    const width = Math.min(Math.abs(didValue) / maxValue * 100, 100);
-    return Math.max(width, 5); // Mínimo 5% para visibilidad
+    const width = Math.min(Math.abs(didValue) / maxValue * 50, 50);
+    return Math.max(width, 2); // Mínimo 2% para visibilidad
 }
 
 // Función para actualizar la visualización
@@ -170,6 +207,10 @@ function updateVisualization(indicator) {
     updateProgressBar(duqueFill, data.duque.did);
     updateProgressBar(petroFill, data.petro.did);
     
+    // Actualizar colores de los porcentajes
+    updatePercentageColor(duqueDidValue, data.duque.did);
+    updatePercentageColor(petroDidValue, data.petro.did);
+    
     // Animar las barras
     setTimeout(() => {
         const duqueWidth = calculateBarWidth(data.duque.did);
@@ -185,15 +226,31 @@ function updateProgressBar(fillElement, didValue) {
     // Resetear la barra
     fillElement.style.width = '0%';
     
-    // Determinar la dirección y color basado en el valor
-    if (didValue < 0) {
-        fillElement.style.background = fillElement.classList.contains('duque-fill') 
-            ? 'linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%)' 
-            : 'linear-gradient(135deg, #ff6b6b 0%, #ee5a5a 100%)';
+    // Remover clases anteriores
+    fillElement.classList.remove('positive', 'negative');
+    
+    // Mantener siempre los colores originales de las barras
+    if (fillElement.classList.contains('duque-fill')) {
+        fillElement.style.background = 'linear-gradient(135deg, #87ceeb 0%, #5fb3d9 100%)';
+    } else if (fillElement.classList.contains('petro-fill')) {
+        fillElement.style.background = 'linear-gradient(135deg, #9966cc 0%, #7a4fb8 100%)';
+    }
+    
+    // Agregar clase según el signo del valor
+    if (didValue >= 0) {
+        fillElement.classList.add('positive');
     } else {
-        fillElement.style.background = fillElement.classList.contains('duque-fill')
-            ? 'linear-gradient(135deg, #87ceeb 0%, #5fb3d9 100%)'
-            : 'linear-gradient(135deg, #9966cc 0%, #7a4fb8 100%)';
+        fillElement.classList.add('negative');
+    }
+}
+
+// Función para actualizar el color del porcentaje
+function updatePercentageColor(element, value) {
+    element.classList.remove('positive', 'negative');
+    if (value >= 0) {
+        element.classList.add('positive');
+    } else {
+        element.classList.add('negative');
     }
 }
 
@@ -236,6 +293,9 @@ function handleResize() {
 
 // Event listeners
 document.addEventListener('DOMContentLoaded', function() {
+    // Crear efecto Animus
+    createAnimusEffect();
+    
     // Agregar event listeners a los botones de indicadores
     indicatorButtons.forEach(button => {
         button.addEventListener('click', handleIndicatorClick);

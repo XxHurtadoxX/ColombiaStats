@@ -18,14 +18,68 @@
         <!-- Indicadores Buttons -->
         <section class="indicators-section">
             <div class="indicators-grid">
-                <button class="indicator-btn active" data-indicator="pib">PIB per Cápita</button>
-                <button class="indicator-btn" data-indicator="desempleo">Desempleo</button>
-                <button class="indicator-btn" data-indicator="inflacion">Inflación</button>
-                <button class="indicator-btn" data-indicator="deficit">Déficit Fiscal</button>
-                <button class="indicator-btn" data-indicator="gini">GINI</button>
-                <button class="indicator-btn" data-indicator="pobreza">Pobreza</button>
-                <button class="indicator-btn" data-indicator="seguridad">Inseguridad (Homicidios/100k hab.)</button>
-                <button class="indicator-btn" data-indicator="mortalidad">Mortalidad Infantil (por 1000 nacidos)</button>
+                <button class="indicator-btn active" data-indicator="pib">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"></line>
+                        <line x1="12" y1="20" x2="12" y2="4"></line>
+                        <line x1="6" y1="20" x2="6" y2="14"></line>
+                    </svg>
+                    PIB per Cápita
+                </button>
+                <button class="indicator-btn" data-indicator="desempleo">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                        <circle cx="12" cy="7" r="4"></circle>
+                    </svg>
+                    Desempleo
+                </button>
+                <button class="indicator-btn" data-indicator="inflacion">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="1" x2="12" y2="23"></line>
+                        <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+                    </svg>
+                    Inflación
+                </button>
+                <button class="indicator-btn" data-indicator="deficit">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                        <polyline points="9,22 9,12 15,12 15,22"></polyline>
+                    </svg>
+                    Déficit Fiscal
+                </button>
+                <button class="indicator-btn" data-indicator="gini">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="5" y1="9" x2="19" y2="9"></line>
+                        <line x1="5" y1="15" x2="19" y2="15"></line>
+                        <line x1="19" y1="5" x2="5" y2="19"></line>
+                    </svg>
+                    GINI
+                </button>
+                <button class="indicator-btn" data-indicator="pobreza">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M6 2v6h4V2"></path>
+                        <path d="M14 2v6h4V2"></path>
+                        <path d="M6 8v8c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V8"></path>
+                        <path d="M2 8h20"></path>
+                        <circle cx="9" cy="13" r="1"></circle>
+                        <circle cx="15" cy="13" r="1"></circle>
+                    </svg>
+                    Pobreza
+                </button>
+                <button class="indicator-btn" data-indicator="seguridad">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        <path d="M9 12l2 2 4-4"></path>
+                    </svg>
+                    Inseguridad (Homicidios/100k hab.)
+                </button>
+                <button class="indicator-btn" data-indicator="mortalidad">
+                    <svg class="btn-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2"></path>
+                        <circle cx="12" cy="12" r="2"></circle>
+                    </svg>
+                    Mortalidad Infantil (por 1000 nacidos)
+                </button>
             </div>
         </section>
 
@@ -126,6 +180,7 @@
         </div>
         
         <div class="footer-bottom">
+            <p class="data-sources">Fuentes de datos: DANE, Banco Mundial, OCDE, OMS, MinSalud, MinDefensa, DatosMacro</p>
             <p class="copyright">© 2025 EA Tech Company S.A.S. Todos los derechos reservados.</p>
         </div>
     </footer>

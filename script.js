@@ -2,7 +2,7 @@
 const indicatorsData = {
     pib: {
         name: "PIB per Cápita",
-        description: "Diferencia en diferencias del PIB per cápita entre los períodos presidenciales",
+        description: "Compara el crecimiento económico de Colombia vs OCDE durante cada gobierno. Un resultado positivo indica que Colombia creció más que el promedio OCDE en ese período.",
         duque: {
             colombia: -2.5,
             ocde: 1.2,
@@ -16,7 +16,7 @@ const indicatorsData = {
     },
     desempleo: {
         name: "Desempleo",
-        description: "Diferencia en diferencias de la tasa de desempleo entre los períodos presidenciales",
+        description: "Compara los cambios en desempleo de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más el desempleo que el promedio OCDE.",
         duque: {
             colombia: 1.8,
             ocde: 0.3,
@@ -30,7 +30,7 @@ const indicatorsData = {
     },
     inflacion: {
         name: "Inflación",
-        description: "Diferencia en diferencias de la tasa de inflación entre los períodos presidenciales",
+        description: "Compara los cambios en inflación de Colombia vs OCDE durante cada gobierno. Un resultado positivo indica que Colombia tuvo mayor incremento inflacionario que el promedio OCDE.",
         duque: {
             colombia: 2.1,
             ocde: 1.8,
@@ -44,7 +44,7 @@ const indicatorsData = {
     },
     deficit: {
         name: "Déficit Fiscal",
-        description: "Diferencia en diferencias del déficit fiscal como porcentaje del PIB",
+        description: "Compara los cambios en déficit fiscal de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia mejoró más su balance fiscal que el promedio OCDE.",
         duque: {
             colombia: -1.8,
             ocde: -0.5,
@@ -58,7 +58,7 @@ const indicatorsData = {
     },
     gini: {
         name: "Coeficiente GINI",
-        description: "Diferencia en diferencias del índice de desigualdad GINI",
+        description: "Compara los cambios en desigualdad de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más la desigualdad que el promedio OCDE.",
         duque: {
             colombia: 0.8,
             ocde: 0.1,
@@ -72,7 +72,7 @@ const indicatorsData = {
     },
     pobreza: {
         name: "Pobreza",
-        description: "Diferencia en diferencias de la tasa de pobreza multidimensional",
+        description: "Compara los cambios en pobreza de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más la pobreza que el promedio OCDE.",
         duque: {
             colombia: 3.2,
             ocde: 0.5,
@@ -86,7 +86,7 @@ const indicatorsData = {
     },
     seguridad: {
         name: "Seguridad",
-        description: "Diferencia en diferencias del índice de seguridad ciudadana",
+        description: "Compara los cambios en seguridad ciudadana de Colombia vs OCDE durante cada gobierno. Un resultado positivo indica que Colombia mejoró más su seguridad que el promedio OCDE.",
         duque: {
             colombia: -2.1,
             ocde: 0.8,
@@ -100,7 +100,7 @@ const indicatorsData = {
     },
     mortalidad: {
         name: "Mortalidad Infantil",
-        description: "Diferencia en diferencias de la tasa de mortalidad infantil",
+        description: "Compara los cambios en mortalidad infantil de Colombia vs OCDE durante cada gobierno. Un resultado negativo indica que Colombia redujo más la mortalidad infantil que el promedio OCDE.",
         duque: {
             colombia: -1.2,
             ocde: -0.8,
@@ -177,6 +177,13 @@ function formatPercentage(value) {
     return `${sign}${value.toFixed(1)}%`;
 }
 
+// Función específica para formatear valores DiD con símbolos de crecimiento/decrecimiento
+function formatDidPercentage(value) {
+    const symbol = value > 0 ? '↑' : value < 0 ? '↓' : '';
+    const sign = value >= 0 ? '+' : '';
+    return `${symbol} ${sign}${value.toFixed(1)}%`;
+}
+
 // Función para calcular el ancho de la barra basado en el valor DiD
 function calculateBarWidth(didValue) {
     // Normalizamos el valor para que esté entre 0 y 50% (la mitad de la barra)
@@ -196,12 +203,12 @@ function updateVisualization(indicator) {
     // Actualizar datos de Duque
     duqueColombiaValue.textContent = formatPercentage(data.duque.colombia);
     duqueOcdeValue.textContent = formatPercentage(data.duque.ocde);
-    duqueDidValue.textContent = formatPercentage(data.duque.did);
+    duqueDidValue.textContent = formatDidPercentage(data.duque.did);
     
     // Actualizar datos de Petro
     petroColombiaValue.textContent = formatPercentage(data.petro.colombia);
     petroOcdeValue.textContent = formatPercentage(data.petro.ocde);
-    petroDidValue.textContent = formatPercentage(data.petro.did);
+    petroDidValue.textContent = formatDidPercentage(data.petro.did);
     
     // Actualizar barras de progreso
     updateProgressBar(duqueFill, data.duque.did);
